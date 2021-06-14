@@ -1,0 +1,13 @@
+{
+    "name": "shopping-cart",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+      "start": "node Neo4j/app.js"
+    },
+    "keywords": [],
+    "author": "Soumya, Soumya",
+    "license": "ISC"    
+}
+  
