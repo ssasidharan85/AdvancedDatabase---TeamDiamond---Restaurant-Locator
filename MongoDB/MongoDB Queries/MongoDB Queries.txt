@@ -1,0 +1,914 @@
+2. DATA CREATION - MONGO
+xxxxxxxxxxxxxxxxxxxxxxxx
+2.1 DB Creation
+***************
+use RestaurantLocator
+--------------------------------------------------
+
+2.2 Collection "users" and data
+*******************************
+ -------------------------------------------------
+db.createCollection("users")
+ ------------------------------------------------- 
+db.users.insertMany(
+[
+{
+	// 1
+    "user_id": "Ha3iJu77CxlrFm-vQRs_8g",
+    "name": "Sebastien",
+    "review_count": 168,
+    "member_since": "2011-01-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [
+        "wqoXYLWmpkEH0YvTmHBsJQ",
+        "KUXLLiJGrjtSsapmxmpvTA",
+        "6e9rJKQC3n0RSKyHLViL-Q"
+    ],
+
+    // float, average rating of all reviews
+    "average_stars": 4.31
+},
+{
+	// 2
+    "user_id": "wqoXYLWmpkEH0YvTmHBsJQ",
+    "name": "Rose",    
+    "review_count": 96,
+    "member_since": "2015-01-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [],
+
+    // float, average rating of all reviews
+    "average_stars": 3.11
+},
+{
+	// 3
+    "user_id": "KUXLLiJGrjtSsapmxmpvTA",
+    "name": "Marianne",
+    "review_count": 56,
+    "member_since": "2016-01-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [
+        "wqoXYLWmpkEH0YvTmHBsJQ"
+    ],
+
+    // float, average rating of all reviews
+    "average_stars": 4.31
+},
+{
+	// 4
+    "user_id": "6e9rJKQC3n0RSKyHLViL-Q",
+    "name": "Ginger",
+    "review_count": 56,
+    "member_since": "2017-01-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [
+        "wqoXYLWmpkEH0YvTmHBsJQ"
+    ],
+	
+    // float, average rating of all reviews
+    "average_stars": 4.31    
+},
+{
+	// 5
+    "user_id": "7f9rJKQC3n0RSKyHLViL-Q",
+    "name": "John",
+    "review_count": 56,
+    "member_since": "2017-04-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [
+        "Ha3iJu77CxlrFm-vQRs_8g"
+    ],
+	
+    // float, average rating of all reviews
+    "average_stars": 4.31    
+},
+{
+	// 6
+    "user_id": "8g9rJKQC3n0RSKyHLViL-Q",
+    "name": "Mahima",
+    "review_count": 56,
+    "member_since": "2017-01-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [
+        "Ha3iJu77CxlrFm-vQRs_8g"
+    ],
+	
+    // float, average rating of all reviews
+    "average_stars": 4.31    
+},
+{
+	// 7
+    "user_id": "9h9rJKQC3n0RSKyHLViL-Q",
+    "name": "Tobias",
+    "review_count": 16,
+    "member_since": "2018-01-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [
+        "Ha3iJu77CxlrFm-vQRs_8g"
+    ],
+	
+    // float, average rating of all reviews
+    "average_stars": 4.31    
+},
+{
+	// 8
+    "user_id": "1h9rJKQC3n0RSKyHLViL-Q",
+    "name": "Tatiana",
+    "review_count": 18,
+    "member_since": "2018-02-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [
+        "Ha3iJu77CxlrFm-vQRs_8g"
+    ],
+	
+    // float, average rating of all reviews
+    "average_stars": 4.31    
+},
+{
+	// 9
+    "user_id": "2w9rJKQC3n0RSKyHLViL-Q",
+    "name": "Andreas",
+    "review_count": 6,
+    "member_since": "2018-03-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [
+        "wqoXYLWmpkEH0YvTmHBsJQ"
+    ],
+
+    // float, average rating of all reviews
+    "average_stars": 4.31    
+},
+{
+	// 10
+    "user_id": "3p9rJKQC3n0RSKyHLViL-Q",
+    "name": "Antanio",
+    "review_count": 8,
+    "member_since": "2018-04-01",
+
+    // array of strings, an array of the user's friend as user_ids
+    "friends": [
+        "Ha3iJu77CxlrFm-vQRs_8g"
+    ],
+
+    // float, average rating of all reviews
+    "average_stars": 4.31    
+}]);
+========================================================================
+========================================================================
+
+2.3 Collection "restaurants" and data
+*******************************
+db.createCollection("restaurants")
+------------------------------------------------------------------------
+db.restaurants.insertMany([
+{
+	// 1.1
+    "restaurant_id": "tnhfDv5Il8EaGSXZGiuQGg",
+    "name": "The Black Pearl",
+    "address": "Vikas Tech Park, 105, 4th Floor, Jyoti Nivas College Rd, 5th Block",
+	"location": "Koramangala",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "postal code": "560095",
+
+    // float, star rating
+    "stars": 4.0,
+
+    // integer, number of reviews
+    "review_count": 17029,
+
+    // integer, 0 or 1 for closed or open, respectively
+    "is_open": 1,
+
+    // object, business attributes to values.
+    "attributes": {
+        "RestaurantsTakeOut": true,
+        "ValetParking": true,
+        "BikeParking": false,
+		"Reservations": false
+    },
+
+    // an array of strings of cuisine categories
+    "categories": [
+        "Barbeque",
+        "Buffet",
+        "Themed Bar",
+		"NonVegetarian"
+    ],
+	
+	"cuisine": "International",
+
+    // an object of key day to value hours, hours are using a 24hr clock
+    "hours": {
+        "Monday": "10:00-21:00",
+        "Tuesday": "10:00-21:00",
+        "Wednesday": "10:00-21:00",
+        "Thursday": "10:00-21:00",
+		"Friday": "10:00-21:00",
+        "Saturday": "11:00-23:00",
+		"Sunday": "11:00-23:00"
+    }
+},
+{
+	// 1.2
+    "restaurant_id": "ssafDv5Il8EaGSXZGiuQGg",
+    "name": "Koramangala Social",
+    "address": "118, 3rd Floor Koramangala Industrial Area, 80 Feet Road Above Bodyworks Spa, 7th Block",
+	"location": "Koramangala",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "postal code": "560095",
+
+    // float, star rating
+    "stars": 4.3,
+
+    // integer, number of reviews
+    "review_count": 18639,
+
+    // integer, 0 or 1 for closed or open, respectively
+    "is_open": 1,
+
+    // object, business attributes to values.
+    "attributes": {
+        "RestaurantsTakeOut": true,
+        "ValetParking": true,
+        "BikeParking": false,
+		"Reservations": true
+    },
+
+    // an array of strings of cuisine categories
+    "categories": [
+        "Pub",
+        "Buffet",
+		"NonVegetarian"
+    ],
+	
+	"cuisine": "International",
+
+    // an object of key day to value hours, hours are using a 24hr clock
+    "hours": {
+        "Monday": "09:00-20:00",
+        "Tuesday": "09:00-20:00",
+        "Wednesday": "09:00-20:00",
+        "Thursday": "09:00-20:00",
+		"Friday": "09:00-20:00",
+        "Saturday": "10:00-22:00",
+		"Sunday": "10:00-22:00"
+    }
+},
+{
+	// 1.3
+    "restaurant_id": "adyfDv5Il8EaGSXZGiuQGg",
+    "name": "Gramin",
+    "address": "Ground Floor Siddam Setty Complex Ganapathi Temple Road near Forum Mall, 7th Block",
+	"location": "Koramangala",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "postal code": "560095",
+
+    // float, star rating
+    "stars": 4.3,
+
+    // integer, number of reviews
+    "review_count": 8271,
+
+    // integer, 0 or 1 for closed or open, respectively
+    "is_open": 1,
+
+    // object, business attributes to values.
+    "attributes": {
+        "RestaurantsTakeOut": true,
+        "ValetParking": true,
+        "BikeParking": false,
+		"Reservations": true
+    },
+
+    // an array of strings of cuisine categories
+    "categories": [
+        "Buffet",
+		"NorthIndian",
+		"Vegetarian"
+    ],
+	
+	"cuisine": "Indian",
+
+    // an object of key day to value hours, hours are using a 24hr clock
+    "hours": {
+        "Monday": "12:00-23:00",
+        "Tuesday": "12:00-23:00",
+        "Wednesday": "12:00-23:00",
+        "Thursday": "12:00-23:00",
+		"Friday": "12:00-23:00",
+        "Saturday": "12:00-23:00",
+		"Sunday": "12:00-23:00"
+    }
+},
+{
+	// 1.4
+    "restaurant_id": "gtmfDv5Il8EaGSXZGiuQGg",
+    "name": "The Hole In The Wall Cafe",
+    "address": "Door No 4, 8th Main Rd, Koramangala 4th Block",
+	"location": "Koramangala",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "postal code": "560047",
+
+    // float, star rating
+    "stars": 4.4,
+
+    // integer, number of reviews
+    "review_count": 12805,
+
+    // integer, 0 or 1 for closed or open, respectively
+    "is_open": 1,
+
+    // object, business attributes to values.
+    "attributes": {
+        "RestaurantsTakeOut": true,
+        "ValetParking": false,
+        "BikeParking": true,
+		"Reservations": false
+    },
+
+    // an array of strings of cuisine categories
+    "categories": [
+        "Cafe",
+		"Pastries",
+		"Vegan"
+    ],
+	
+	"cuisine": "European",
+
+    // an object of key day to value hours, hours are using a 24hr clock
+    "hours": {
+        "Monday": "08:00-20:00",
+        "Tuesday": "08:00-20:00",
+        "Wednesday": "08:00-20:00",
+        "Thursday": "08:00-20:00",
+		"Friday": "08:00-20:00",
+        "Saturday": "08:00-20:00",
+		"Sunday": "08:00-20:00"
+    }
+},
+{
+	// 1.5
+    "restaurant_id": "vinfDv5Il8EaGSXZGiuQGg",
+    "name": "Buff Buffet Buff",
+    "address": "No. 60, Inside BluPetal Hotel, Jyoti Nivas College Rd, 5th Block",
+	"location": "Koramangala",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "postal code": "560095",
+
+    // float, star rating
+    "stars": 4.1,
+
+    // integer, number of reviews
+    "review_count": 2829,
+
+    // integer, 0 or 1 for closed or open, respectively
+    "is_open": 1,
+
+    // object, business attributes to values.
+    "attributes": {
+        "RestaurantsTakeOut": true,
+        "ValetParking": true,
+        "BikeParking": true,
+		"Reservations": true
+    },
+
+    // an array of strings of cuisine categories
+    "categories": [
+        "Buffet",
+		"NonVegetarian"
+    ],
+	
+	"cuisine": "International",
+
+    // an object of key day to value hours, hours are using a 24hr clock
+    "hours": {
+        "Monday": "12:00-22:30",
+        "Tuesday": "12:00-22:30",
+        "Wednesday": "12:00-22:30",
+        "Thursday": "12:00-22:30",
+		"Friday": "12:00-23:00",
+        "Saturday": "12:00-23:00",
+		"Sunday": "12:00-23:00"
+    }
+}
+]);
+------------------------------------------------------
+db.restaurants.insertMany([
+// 2. Restaurants - INDIRANAGAR
+{
+	// 2.1
+    "restaurant_id": "devfDv5Il8EaGSXZGiuQGg",
+    "name": "Bombay Brasserie - Indiranagar",
+    "address": "2989/B, 12th Main Rd, HAL 2nd Stage",
+	"location": "Indiranagar",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "postal code": "560008",
+
+    // float, star rating
+    "stars": 4.3,
+
+    // integer, number of reviews
+    "review_count": 6028,
+
+    // integer, 0 or 1 for closed or open, respectively
+    "is_open": 1,
+
+    // object, business attributes to values.
+    "attributes": {
+        "RestaurantsTakeOut": true,
+        "ValetParking": true,
+        "BikeParking": false,
+	"Reservations": false
+    },
+
+    // an array of strings of cuisine categories
+    "categories": [
+        "Buffet",
+        "Contemporary Indian Food",
+	"NonVegetarian"
+    ],
+	
+	"cuisine": "Indian",
+
+    // an object of key day to value hours, hours are using a 24hr clock
+    "hours": {
+        "Monday": "12:00-23:00",
+        "Tuesday": "12:00-23:00",
+        "Wednesday": "12:00-23:00",
+        "Thursday": "12:00-23:00",
+	"Friday": "12:00-23:00",
+        "Saturday": "12:00-23:00",
+	"Sunday": "12:00-23:00"
+    }
+},
+{
+	// 2.2
+    "restaurant_id": "vsafDv5Il8EaGSXZGiuQGg",
+    "name": "Burma Burma Restaurant & Tea Room",
+    "address": "607, 12th Main Rd, 7th Cross, HAL 2nd Stage, Indiranagar",
+	"location": "Indiranagar",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "postal code": "560038",
+
+    // float, star rating
+    "stars": 4.3,
+
+    // integer, number of reviews
+    "review_count": 5071,
+
+    // integer, 0 or 1 for closed or open, respectively
+    "is_open": 1,
+
+    // object, business attributes to values.
+    "attributes": {
+        "RestaurantsTakeOut": false,
+        "ValetParking": true,
+        "BikeParking": false,
+	"Reservations": true
+    },
+
+    // an array of strings of cuisine categories
+    "categories": [
+        "Burmese Food",
+		"Vegetarian"
+    ],
+	
+	"cuisine": "Indian",
+
+    // an object of key day to value hours, hours are using a 24hr clock
+    "hours": {
+        "Monday": "11:30-21:30",
+        "Tuesday": "11:30-21:30",
+        "Wednesday": "11:30-21:30",
+        "Thursday": "11:30-21:30",
+		"Friday": "11:30-21:30",
+        "Saturday": "11:30-21:30",
+		"Sunday": "11:30-21:30"
+    }
+},
+{
+	// 2.3
+    "restaurant_id": "sdnfDv5Il8EaGSXZGiuQGg",
+    "name": "Chianti, Indiranagar",
+    "address": "960, 12th Main Rd, near Gold Gym, HAL 2nd Stage, Indiranagar",
+	"location": "Indiranagar",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "postal code": "560008",
+
+    // float, star rating
+    "stars": 4.4,
+
+    // integer, number of reviews
+    "review_count": 4768,
+
+    // integer, 0 or 1 for closed or open, respectively
+    "is_open": 1,
+
+    // object, business attributes to values.
+    "attributes": {
+        "RestaurantsTakeOut": true,
+        "ValetParking": true,
+        "BikeParking": true,
+	"Reservations": true
+    },
+
+    // an array of strings of cuisine categories
+    "categories": [
+		"Bar",
+		"NonVegetarian"
+    ],
+	
+	"cuisine": "Italian",
+
+    // an object of key day to value hours, hours are using a 24hr clock
+    "hours": {
+        "Monday": "11:30-22:30",
+        "Tuesday": "11:30-22:30",
+        "Wednesday": "11:30-22:30",
+        "Thursday": "11:30-22:30",
+		"Friday": "11:30-22:30",
+        "Saturday": "11:30-23:30",
+		"Sunday": "11:30-23:30"
+    }
+}
+]);
+========================================================================
+========================================================================
+
+2.4 Collection "reviews" and data
+*************************************
+db.createCollection("reviews")
+------------------------------------------------------------------------
+db.reviews.insertMany([
+// 1. "The Black Pearl" - KORAMANGALA
+{
+    "review_id": "zdSx_SD6obEhz9VrW9uAWA",
+    "user_id": "Ha3iJu77CxlrFm-vQRs_8g", // Sebastian
+    "restaurant_id": "tnhfDv5Il8EaGSXZGiuQGg",
+    "stars": 4,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-03-09",
+
+    // string, the review
+    "text": "Great place to hang out after work: the prices are decent, and the ambience is fun. It's a bit loud, but very lively. The staff is friendly, and the food is good. They have a good selection of drinks."
+},
+{
+    "review_id": "abSx_SD6obEhz9VrW9uAWA",
+    "user_id": "wqoXYLWmpkEH0YvTmHBsJQ", // Rose
+    "restaurant_id": "tnhfDv5Il8EaGSXZGiuQGg",
+    "stars": 3.8,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-04-19",
+
+    // string, the review
+    "text": "Good Buffet menu, Varieties of starters, desserts.. good place to hangout"
+},
+{
+    "review_id": "cdSx_SD6obEhz9VrW9uAWA",
+    "user_id": "KUXLLiJGrjtSsapmxmpvTA", // Marianne
+    "restaurant_id": "tnhfDv5Il8EaGSXZGiuQGg",
+    "stars": 4.1,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-06-09",
+
+    // string, the review
+    "text": "Very nice place. Awesome interior. Food is awesome with live barbecue, bar, and a whole lot of dessert options. Loved the buffet."
+},
+{
+    "review_id": "edSx_SD6obEhz9VrW9uAWA",
+    "user_id": "3p9rJKQC3n0RSKyHLViL-Q", // Antanio
+    "restaurant_id": "tnhfDv5Il8EaGSXZGiuQGg",
+    "stars": 3.7,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-07-21",
+
+    // string, the review
+    "text": "Quite honestly I had very high expectations. The food is good, but nothing to rave about unfortunately."
+},
+// 2. "Koramangala Social" - KORAMANGALA
+{
+    "review_id": "svSx_SD6obEhz9VrW9uAWA",
+    "user_id": "Ha3iJu77CxlrFm-vQRs_8g", // Sebastian
+    "restaurant_id": "ssafDv5Il8EaGSXZGiuQGg",
+    "stars": 4.1,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-04-16",
+
+    // string, the review
+    "text": "Just loved this place - Great ambience, service and food.Their Beef Chilli is a must try!"
+},
+{
+    "review_id": "vsSx_SD6obEhz9VrW9uAWA",
+    "user_id": "wqoXYLWmpkEH0YvTmHBsJQ", // Rose
+    "restaurant_id": "ssafDv5Il8EaGSXZGiuQGg",
+    "stars": 4.2,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-04-29",
+
+    // string, the review
+    "text": "Great place to hangout. You will definitely enjoy the vibes inside. Great ambience and atmosphere!"
+},
+{
+    "review_id": "vsDx_SD6obEhz9VrW9uAWA",
+    "user_id": "KUXLLiJGrjtSsapmxmpvTA", // Marianne
+    "restaurant_id": "ssafDv5Il8EaGSXZGiuQGg",
+    "stars": 4,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-05-11",
+
+    // string, the review
+    "text": "Most happening place for party, casual date, sports night, workstation and gatherings. The ambiance is super lit and soothing. Must visit!!!"
+},
+{
+    "review_id": "dsVx_SD6obEhz9VrW9uAWA",
+    "user_id": "1h9rJKQC3n0RSKyHLViL-Q", // Tatiana
+    "restaurant_id": "ssafDv5Il8EaGSXZGiuQGg",
+    "stars": 4.1,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-05-23",
+
+    // string, the review
+    "text": "Always loved the roof top resturants, and Social is the one among the best one in that. They have the great ambiance, the best place to hangout for the weekends!"
+},
+// 3. "Buff Buffet Buff" - KORAMANGALA
+{
+    "review_id": "adSx_SD6obEhz9VrW9uAWA",
+    "user_id": "Ha3iJu77CxlrFm-vQRs_8g", // Sebastian
+    "restaurant_id": "vinfDv5Il8EaGSXZGiuQGg",
+    "stars": 4.1,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-07-16",
+
+    // string, the review
+    "text": "Featuring a simple décor with prominence given to the long tables and slabs for the buffet line up, this is a good place to take a group from work or to hold a family gathering."
+},
+{
+    "review_id": "gaSx_SD6obEhz9VrW9uAWA",
+    "user_id": "wqoXYLWmpkEH0YvTmHBsJQ", // Rose
+    "restaurant_id": "vinfDv5Il8EaGSXZGiuQGg",
+    "stars": 4,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-07-29",
+
+    // string, the review
+    "text": "Good place with equal variety of non veg and veg food served with great service."
+},
+{
+    "review_id": "pnDx_SD6obEhz9VrW9uAWA",
+    "user_id": "KUXLLiJGrjtSsapmxmpvTA", // Marianne
+    "restaurant_id": "vinfDv5Il8EaGSXZGiuQGg",
+    "stars": 4,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-08-11",
+
+    // string, the review
+    "text": "It was a great dinner. Nice ambience. Feel good place. Customer service and hospitality was great. We liked it very much. Worth for money."
+},
+// 4. "Bombay Brasserie - Indiranagar" - INDIRANAGAR
+{
+    "review_id": "jkSx_SD6obEhz9VrW9uAWA",
+    "user_id": "Ha3iJu77CxlrFm-vQRs_8g", // Sebastian
+    "restaurant_id": "devfDv5Il8EaGSXZGiuQGg",
+    "stars": 4.2,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-06-14",
+
+    // string, the review
+    "text": "Great fusion Indian food in a Mediterranean vibe setting."
+},
+{
+    "review_id": "lmSx_SD6obEhz9VrW9uAWA",
+    "user_id": "wqoXYLWmpkEH0YvTmHBsJQ", // Rose
+    "restaurant_id": "devfDv5Il8EaGSXZGiuQGg",
+    "stars": 4,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-06-29",
+
+    // string, the review
+    "text": "The place is very aesthetically done, loved the many artefacts and the wall art. It’s simple and yet very contemporary."
+},
+{
+    "review_id": "noDx_SD6obEhz9VrW9uAWA",
+    "user_id": "KUXLLiJGrjtSsapmxmpvTA", // Marianne
+    "restaurant_id": "devfDv5Il8EaGSXZGiuQGg",
+    "stars": 4,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-07-01",
+
+    // string, the review
+    "text": "Great place to spend time with family , friendly staff and tasty food."
+},
+{
+    "review_id": "ilDx_SD6obEhz9VrW9uAWA",
+    "user_id": "9h9rJKQC3n0RSKyHLViL-Q", // Tobias
+    "restaurant_id": "devfDv5Il8EaGSXZGiuQGg",
+    "stars": 3.9,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-07-11",
+
+    // string, the review
+    "text": "Good ambience and service,wide choice of dishes,bit expensive though!"
+},
+// 5. "Burma Burma Restaurant & Tea Room" - INDIRANAGAR
+{
+    "review_id": "xySx_SD6obEhz9VrW9uAWA",
+    "user_id": "Ha3iJu77CxlrFm-vQRs_8g", // Sebastian
+    "restaurant_id": "vsafDv5Il8EaGSXZGiuQGg",
+    "stars": 4.2,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-08-14",
+
+    // string, the review
+    "text": "Great variety of drinks (non-alcoholic), starters, main courses and desserts."
+},
+{
+    "review_id": "yzSx_SD6obEhz9VrW9uAWA",
+    "user_id": "wqoXYLWmpkEH0YvTmHBsJQ", // Rose
+    "restaurant_id": "vsafDv5Il8EaGSXZGiuQGg",
+    "stars": 4.1,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-09-09",
+
+    // string, the review
+    "text": "Great Ambience, Service,Location,good crowd and most importantly the taste of food."
+},
+{
+    "review_id": "zhDx_SD6obEhz9VrW9uAWA",
+    "user_id": "KUXLLiJGrjtSsapmxmpvTA", // Marianne
+    "restaurant_id": "vsafDv5Il8EaGSXZGiuQGg",
+    "stars": 4.2,
+
+    // string, review date YYYY-MM-DD
+    "date": "2019-09-18",
+
+    // string, the review
+    "text": "Decent place. Something new. Be open to new flavours even if you don't like them. Samost soup was best."
+}
+]);
+========================================================================
+========================================================================
+
+2.5 Collection "events" and data
+********************************
+db.createCollection("events")
+------------------------------------------------------------------------
+db.events.insertMany([
+{
+	// 1
+    // string, 22 character unique review id
+    "event_id": "evSx_SD6obEhz9VrW9uAWA",
+
+    // string, 22 character business id, maps to business in business.json
+    "restaurant_id": "tnhfDv5Il8EaGSXZGiuQGg",
+	
+	// event type
+	"event_type": "Live Concert",
+
+    // string, date formatted YYYY-MM-DD
+    "from_date": "2019-11-23",
+	"to_date": "2019-11-23",
+
+    // string, event information
+    "text": "Welcoming all for the live concert on Saturday, 24th November 2019, 17:00-22:00 at the ground floor. Admission is free. Dance like no one’s watching you under the beautiful city sky !",
+	
+	// array of strings, an array of interested users
+    "interested": [
+		"wqoXYLWmpkEH0YvTmHBsJQ",
+		"KUXLLiJGrjtSsapmxmpvTA",
+		"6e9rJKQC3n0RSKyHLViL-Q"     
+    ],
+	
+	// array of strings, an array of users attended
+    "attended": [
+        "wqoXYLWmpkEH0YvTmHBsJQ",
+		"KUXLLiJGrjtSsapmxmpvTA"  
+    ]
+},
+{
+	// 2
+    // string, 22 character unique review id
+    "event_id": "veSx_SD6obEhz9VrW9uAWA",
+
+    // string, 22 character business id, maps to business in business.json
+    "restaurant_id": "tnhfDv5Il8EaGSXZGiuQGg",
+	
+	// event type
+	"event_type": "Live Concert",
+
+    // string, date formatted YYYY-MM-DD
+    "from_date": "2019-12-01",
+	"to_date": "2019-12-01",
+
+    // string, event information
+    "text": "It's time to cheer up for your favourite In house DJ Team. Watch Live Concerts with your loved ones and enjoy 1+1 offer on limited drinks!",
+	
+	// array of strings, an array of interested users
+    "interested": [
+		"wqoXYLWmpkEH0YvTmHBsJQ",
+		"KUXLLiJGrjtSsapmxmpvTA"  
+    ],
+	
+	// array of strings, an array of users attended
+    "attended": [
+        "wqoXYLWmpkEH0YvTmHBsJQ",
+		"KUXLLiJGrjtSsapmxmpvTA"
+    ]
+},
+// 2. "Koramangala Social" - KORAMANGALA
+{
+	// 3
+    // string, 22 character unique review id
+    "event_id": "pkSx_SD6obEhz9VrW9uAWA",
+
+    // string, 22 character business id, maps to business in business.json
+    "restaurant_id": "ssafDv5Il8EaGSXZGiuQGg",
+	
+	// event type
+	"event_type": "Live Concert",
+
+    // string, date formatted YYYY-MM-DD
+    "from_date": "2019-12-01",
+	"to_date": "2019-12-01",
+
+    // string, event information
+    "text": "Enjoy your favourite songs at its best with our JAI HO Pro Band with exciting offers on food and beverages!! Call and book now!",
+	
+	// array of strings, an array of interested users
+    "interested": [
+		"wqoXYLWmpkEH0YvTmHBsJQ",
+		"KUXLLiJGrjtSsapmxmpvTA" 
+    ],
+	
+	// array of strings, an array of users attended
+    "attended": [
+        "wqoXYLWmpkEH0YvTmHBsJQ",
+		"KUXLLiJGrjtSsapmxmpvTA"
+    ]
+},
+// Event Type - BEER MANIA
+
+	// 4
+    // string, 22 character unique review id
+    "event_id": "svSx_SD6obEhz9VrW9uAWA",
+
+    // string, 22 character business id, maps to business in business.json
+    "restaurant_id": "ssafDv5Il8EaGSXZGiuQGg",
+	
+	// event type
+	"event_type": "Beer Mania",
+
+    // string, date formatted YYYY-MM-DD
+    "from_date": "2019-12-08",
+	"to_date": "2019-12-15",
+
+    // string, event information
+    "text": "Come and enjoy amazing price on beers at the best rooftop bar in Bangalore!",
+	
+	// array of strings, an array of interested users
+    "interested": [
+		"wqoXYLWmpkEH0YvTmHBsJQ",
+		"KUXLLiJGrjtSsapmxmpvTA" 
+    ],
+	
+	// array of strings, an array of users attended
+    "attended": [
+        "wqoXYLWmpkEH0YvTmHBsJQ",
+		"KUXLLiJGrjtSsapmxmpvTA"
+    ]
+}
+]);
+
