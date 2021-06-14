@@ -1,0 +1,242 @@
+// COUNTRY
+CREATE (cou1:Country { name: "India" })
+
+// STATE
+CREATE (sta1:State { name: "Karnataka" })
+
+// CITY
+CREATE (cit1:City { name: "Bengaluru" })
+
+// LOCATIONS
+CREATE (loc1:Location { name: "Koramangala" })
+CREATE (loc2:Location { name: "Indiranagar" })
+
+// STREETS
+CREATE (str1:Street { name: "Koramangala, 4th Block" })
+CREATE (str2:Street { name: "Koramangala, 5th Block" })
+CREATE (str3:Street { name: "Koramangala, 7th Block" })
+
+CREATE (str4:Street { name: "Indiranagar, HAL 2nd Stage" })
+
+// Creates Crossroads, roads, points of interest with restaurant names and cuisine
+// Create relations
+
+CREATE (a:Crossroad {name:"A"})
+CREATE (b:Crossroad {name:"B"})
+CREATE (c:Crossroad {name:"C"})
+CREATE (d:Crossroad {name:"D"})
+CREATE (e:Crossroad {name:"E"})
+CREATE (f:Crossroad {name:"F"})
+CREATE (g:Crossroad {name:"G"})
+
+CREATE (a)-[:ROAD {cost:50}]->(b)
+CREATE (b)-[:ROAD {cost:60}]->(c)
+CREATE (c)-[:ROAD {cost:70}]->(d)
+CREATE (b)-[:ROAD {cost:20}]->(d)
+CREATE (c)-[:ROAD {cost:35}]->(e)
+CREATE (e)-[:ROAD {cost:45}]->(f)
+CREATE (f)-[:ROAD {cost:15}]->(g)
+
+// RESTAURANTS
+CREATE (res1:Restaurant { name: "The Black Pearl" , id: "tnhfDv5Il8EaGSXZGiuQGg" , cuisine:"International"})
+CREATE (res2:Restaurant { name: "Koramangala Social", id: "ssafDv5Il8EaGSXZGiuQGg" , cuisine:"International"})
+CREATE (res3:Restaurant { name: "Gramin", id: "adyfDv5Il8EaGSXZGiuQGg" , cuisine:"Indian"})
+CREATE (res4:Restaurant { name: "The Hole In The Wall Cafe", id: "gtmfDv5Il8EaGSXZGiuQGg" , cuisine:"European"})
+CREATE (res5:Restaurant { name: "Buff Buffet Buff", id: "vinfDv5Il8EaGSXZGiuQGg" , cuisine:"International"})
+
+CREATE (res6:Restaurant { name: "Bombay Brasserie - Indiranagar", id: "devfDv5Il8EaGSXZGiuQGg" , cuisine:"Indian"})
+CREATE (res7:Restaurant { name: "Burma Burma Restaurant & Tea Room", id: "vsafDv5Il8EaGSXZGiuQGg" , cuisine:"Indian"})
+CREATE (res8:Restaurant { name: "Chianti, Indiranagar", id: "sdnfDv5Il8EaGSXZGiuQGg" , cuisine:"Italian"})
+
+CREATE (a)-[:HAS_RESTAURANT {cost:0}]->(res1)
+CREATE (b)-[:HAS_RESTAURANT {cost:0}]->(res2)
+CREATE (c)-[:HAS_RESTAURANT {cost:0}]->(res3)
+CREATE (d)-[:HAS_RESTAURANT {cost:0}]->(res4)
+CREATE (a)-[:HAS_RESTAURANT {cost:0}]->(res5)
+
+// RESTAURANT DELIVERIES
+
+CREATE (P201801:Delivery {name: "Deliveries in Jan", year: "2018", month: "January"})
+CREATE (P201802:Delivery {name: "Deliveries in Feb", year: "2018", month: "February"})
+CREATE (P201803:Delivery {name: "Deliveries in Mar", year: "2018", month: "March"})
+CREATE (P201804:Delivery {name: "Deliveries in Apr", year: "2018", month: "April"})
+CREATE (P201805:Delivery {name: "Deliveries in May", year: "2018", month: "May"})
+CREATE (P201806:Delivery {name: "Deliveries in Jun", year: "2018", month: "June"})
+CREATE (P201807:Delivery {name: "Deliveries in Jul", year: "2018", month: "July"})
+CREATE (P201808:Delivery {name: "Deliveries in Aug", year: "2018", month: "August"})
+CREATE (P201809:Delivery {name: "Deliveries in Sep", year: "2018", month: "September"})
+CREATE (P201810:Delivery {name: "Deliveries in Oct", year: "2018", month: "October"})
+CREATE (P201811:Delivery {name: "Deliveries in Nov", year: "2018", month: "November"})
+CREATE (P201812:Delivery {name: "Deliveries in Dec", year: "2018", month: "December"})
+
+//RESTAURANT - DELIVERIES RELATION
+// ASSUMPTION 1 - Both restaurants delivered on an average 30 orders per day.
+// ASSUMPTION 2 - Both restaurants have delivered previously to the destination address to which the order is to be delivered.
+MERGE (res6)-[:ON_TIME{total:24}]->(P201801)
+MERGE (res7)-[:ON_TIME{total:22}]->(P201801)
+MERGE (res6)-[:ON_TIME{total:20}]->(P201802)
+MERGE (res7)-[:ON_TIME{total:24}]->(P201802)
+MERGE (res6)-[:ON_TIME{total:24}]->(P201803)
+MERGE (res7)-[:ON_TIME{total:22}]->(P201803)
+MERGE (res6)-[:ON_TIME{total:24}]->(P201804)
+MERGE (res7)-[:ON_TIME{total:20}]->(P201804)
+MERGE (res6)-[:ON_TIME{total:24}]->(P201805)
+MERGE (res7)-[:ON_TIME{total:20}]->(P201805)
+MERGE (res6)-[:ON_TIME{total:21}]->(P201806)
+MERGE (res7)-[:ON_TIME{total:24}]->(P201806)
+MERGE (res6)-[:ON_TIME{total:24}]->(P201807)
+MERGE (res7)-[:ON_TIME{total:23}]->(P201807)
+MERGE (res6)-[:ON_TIME{total:24}]->(P201808)
+MERGE (res7)-[:ON_TIME{total:21}]->(P201808)
+MERGE (res6)-[:ON_TIME{total:24}]->(P201809)
+MERGE (res7)-[:ON_TIME{total:22}]->(P201809)
+MERGE (res6)-[:ON_TIME{total:22}]->(P201810)
+MERGE (res7)-[:ON_TIME{total:24}]->(P201810)
+MERGE (res6)-[:ON_TIME{total:24}]->(P201811)
+MERGE (res7)-[:ON_TIME{total:22}]->(P201811)
+MERGE (res6)-[:ON_TIME{total:23}]->(P201812)
+MERGE (res7)-[:ON_TIME{total:24}]->(P201812)
+
+// CUISINES
+CREATE (cus1:Cuisine { name: "International" })
+CREATE (cus2:Cuisine { name: "Indian" })
+CREATE (cus3:Cuisine { name: "European" })
+CREATE (cus4:Cuisine { name: "Italian" })
+
+// USERS
+CREATE (usr1:User { name: "Sebastian", id: "Ha3iJu77CxlrFm-vQRs_8g" })
+CREATE (usr2:User { name: "Rose", id: "wqoXYLWmpkEH0YvTmHBsJQ" })
+CREATE (usr3:User { name: "Marianne", id: "KUXLLiJGrjtSsapmxmpvTA" })
+CREATE (usr4:User { name: "Ginger", id: "6e9rJKQC3n0RSKyHLViL-Q" })
+CREATE (usr5:User { name: "John", id: "7f9rJKQC3n0RSKyHLViL-Q" })
+CREATE (usr6:User { name: "Mahima", id: "8g9rJKQC3n0RSKyHLViL-Q" })
+CREATE (usr7:User { name: "Tobias", id: "9h9rJKQC3n0RSKyHLViL-Q" })
+CREATE (usr8:User { name: "Tatiana", id: "1h9rJKQC3n0RSKyHLViL-Q" })
+CREATE (usr9:User { name: "Andreas", id: "2w9rJKQC3n0RSKyHLViL-Q" })
+CREATE (usr10:User { name: "Antanio", id: "3p9rJKQC3n0RSKyHLViL-Q" })
+
+// USER AT STREET 
+MERGE (usr5) -[:IS_AT] -> (str4)
+
+// FRIENDS OF USERS
+MERGE (usr1) -[:IS_FRIEND_OF] -> (usr2)
+MERGE (usr1) -[:IS_FRIEND_OF] -> (usr3)
+MERGE (usr1) -[:IS_FRIEND_OF] -> (usr4)
+
+MERGE (usr3) -[:IS_FRIEND_OF] -> (usr2)
+
+MERGE (usr4) -[:IS_FRIEND_OF] -> (usr2)
+
+MERGE (usr5) -[:IS_FRIEND_OF] -> (usr1)
+MERGE (usr6) -[:IS_FRIEND_OF] -> (usr1)
+MERGE (usr7) -[:IS_FRIEND_OF] -> (usr1)
+MERGE (usr8) -[:IS_FRIEND_OF] -> (usr1)
+
+MERGE (usr9) -[:IS_FRIEND_OF] -> (usr2)
+
+MERGE (usr10) -[:IS_FRIEND_OF] -> (usr1)
+
+// REVIEWS
+CREATE (rev1:Review { name:"r1",date: "2019-03-09" })
+CREATE (rev2:Review { name:"r2",date: "2019-04-19" })
+CREATE (rev3:Review { name:"r3",date: "2019-06-09" })
+CREATE (rev4:Review { name:"r4",date: "2019-07-21" })
+
+CREATE (rev5:Review { name:"r5",date: "2019-04-16" })
+CREATE (rev6:Review { name:"r6",date: "2019-04-29" })
+CREATE (rev7:Review { name:"r7",date: "2019-05-11" })
+CREATE (rev8:Review { name:"r8",date: "2019-05-23" })
+
+CREATE (rev9:Review { name:"r9",date: "2019-07-16" })
+CREATE (rev10:Review { name:"r10",date: "2019-07-29" })
+CREATE (rev11:Review { name:"r11",date: "2019-08-11" })
+
+CREATE (rev12:Review { name:"r12",date: "2019-06-14" })
+CREATE (rev13:Review { name:"r13",date: "2019-06-29" })
+CREATE (rev14:Review { name:"r14",date: "2019-07-01" })
+CREATE (rev15:Review { name:"r15",date: "2019-07-11" })
+
+CREATE (rev16:Review { name:"r16",date: "2019-08-14" })
+CREATE (rev17:Review { name:"r17",date: "2019-09-09" })
+CREATE (rev18:Review { name:"r18",date: "2019-09-18" })
+
+// USERS WROTE REVIEWS ON RESTAURANTS
+MERGE (usr1) -[:WROTE] -> (rev1) -[:REVIEW_ON] -> (res1) -[:SERVES] -> (cus1) -[:AT_STREET] -> (str2) -[:AT_LOCATION] -> (loc1) -[:IN_CITY] -> (cit1) -[:IN_STATE] -> (sta1) -[:IN_COUNTRY] -> (cou1)
+MERGE (usr2) -[:WROTE] -> (rev2) -[:REVIEW_ON] -> (res1)
+MERGE (usr3) -[:WROTE] -> (rev3) -[:REVIEW_ON] -> (res1)
+MERGE (usr10) -[:WROTE] -> (rev4) -[:REVIEW_ON] -> (res1)
+
+// USER LIKES RESTAURANTS
+MERGE (usr1) -[:LIKES] -> (res1)
+
+// RESTAURANTS HAVE EVENTS / USERS INTERESTED / USERS ATTENDED
+MERGE (res1) -[:HAS_EVENT] -> (e1:Event {name: "e1", id: "evSx_SD6obEhz9VrW9uAWA", fromDate: "2019-11-23", toDate: "2019-11-23"}) -[:EVENT_TYPE] -> (l1:LiveConcert {name: "Live Concert"})
+MERGE (usr2) -[:INTERESTED_IN] -> (e1)
+MERGE (usr3) -[:INTERESTED_IN] -> (e1)
+MERGE (usr4) -[:INTERESTED_IN] -> (e1)
+
+MERGE (usr2) -[:ATTENDED] -> (e1)
+MERGE (usr3) -[:ATTENDED] -> (e1)
+
+MERGE (usr4) -[:NOT_ATTENDED] -> (e1)
+
+MERGE (res1) -[:HAS_EVENT] -> (e2:Event {name: "e2", id: "veSx_SD6obEhz9VrW9uAWA", fromDate: "2019-12-01", toDate: "2019-12-01"}) -[:EVENT_TYPE] -> (l1)
+MERGE (usr2) -[:INTERESTED_IN] -> (e2)
+MERGE (usr3) -[:INTERESTED_IN] -> (e2)
+
+MERGE (usr2) -[:ATTENDED] -> (e2)
+MERGE (usr3) -[:ATTENDED] -> (e2)
+
+MERGE (res1) -[:HAS_EVENT] -> (e3:Event {name: "e3", id: "llSx_SD6obEhz9VrW9uAWA", fromDate: "2019-12-23", toDate: "2019-12-23"}) -[:EVENT_TYPE] -> (l1)
+MERGE (usr9) -[:INTERESTED_IN] -> (e3)
+MERGE (usr3) -[:INTERESTED_IN] -> (e3)
+MERGE (usr10) -[:INTERESTED_IN] -> (e3)
+
+MERGE (usr9) -[:ATTENDED] -> (e3)
+MERGE (usr3) -[:ATTENDED] -> (e3)
+MERGE (usr10) -[:ATTENDED] -> (e3)
+MERGE (usr6) -[:ATTENDED] -> (e3)
+MERGE (usr8) -[:ATTENDED] -> (e3)
+MERGE (usr7) -[:ATTENDED] -> (e3)
+
+MERGE (usr1) -[:WROTE] -> (rev5) -[:REVIEW_ON] -> (res2) -[:SERVES] -> (cus1) -[:AT_STREET] -> (str3) -[:AT_LOCATION] -> (loc1) -[:IN_CITY] -> (cit1) -[:IN_STATE] -> (sta1) -[:IN_COUNTRY] -> (cou1)
+MERGE (usr2) -[:WROTE] -> (rev6) -[:REVIEW_ON] -> (res2)
+MERGE (usr3) -[:WROTE] -> (rev7) -[:REVIEW_ON] -> (res2)
+MERGE (usr8) -[:WROTE] -> (rev8) -[:REVIEW_ON] -> (res2)
+
+MERGE (usr1) -[:LIKES] -> (res2)
+
+MERGE (res2) -[:HAS_EVENT] -> (e4:Event {name: "e4", id: "pkSx_SD6obEhz9VrW9uAWA", fromDate: "2019-12-01", toDate: "2019-12-01"})  -[:EVENT_TYPE] -> (l1)
+MERGE (usr2) -[:INTERESTED_IN] -> (e4)
+MERGE (usr3) -[:INTERESTED_IN] -> (e4)
+
+MERGE (usr2) -[:ATTENDED] -> (e4)
+MERGE (usr3) -[:ATTENDED] -> (e4)
+
+MERGE (res2) -[:HAS_EVENT] -> (e5:Event {name: "e5", id: "svSx_SD6obEhz9VrW9uAWA", fromDate: "2019-12-08", toDate: "2019-12-15"}) -[:EVENT_TYPE] -> (l2:BeerMania {name: "Beer Mania"})
+MERGE (usr2) -[:INTERESTED_IN] -> (e5)
+MERGE (usr3) -[:INTERESTED_IN] -> (e5)
+
+MERGE (usr2) -[:ATTENDED] -> (e5)
+MERGE (usr3) -[:ATTENDED] -> (e5)
+
+MERGE (res3) -[:SERVES] -> (cus2) -[:AT_STREET] -> (str3) -[:AT_LOCATION] -> (loc1) -[:IN_CITY] -> (cit1) -[:IN_STATE] -> (sta1) -[:IN_COUNTRY] -> (cou1)
+
+MERGE (usr1) -[:LIKES] -> (res3)
+
+MERGE (res4) -[:SERVES] -> (cus3) -[:AT_STREET] -> (str1) -[:AT_LOCATION] -> (loc1) -[:IN_CITY] -> (cit1) -[:IN_STATE] -> (sta1) -[:IN_COUNTRY] -> (cou1)
+
+MERGE (usr1) -[:WROTE] -> (rev9) -[:REVIEW_ON] -> (res5) -[:SERVES] -> (cus1) -[:AT_STREET] -> (str2) -[:AT_LOCATION] -> (loc1) -[:IN_CITY] -> (cit1) -[:IN_STATE] -> (sta1) -[:IN_COUNTRY] -> (cou1)
+MERGE (usr2) -[:WROTE] -> (rev10) -[:REVIEW_ON] -> (res5)
+MERGE (usr3) -[:WROTE] -> (rev11) -[:REVIEW_ON] -> (res5)
+
+MERGE (usr1) -[:WROTE] -> (rev12) -[:REVIEW_ON] -> (res6) -[:SERVES] -> (cus2) -[:AT_STREET] -> (str4) -[:AT_LOCATION] -> (loc2) -[:IN_CITY] -> (cit1) -[:IN_STATE] -> (sta1) -[:IN_COUNTRY] -> (cou1)
+MERGE (usr2) -[:WROTE] -> (rev13) -[:REVIEW_ON] -> (res6)
+MERGE (usr3) -[:WROTE] -> (rev14) -[:REVIEW_ON] -> (res6)
+MERGE (usr7) -[:WROTE] -> (rev15) -[:REVIEW_ON] -> (res6)
+
+MERGE (usr1) -[:WROTE] -> (rev16) -[:REVIEW_ON] -> (res7) -[:SERVES] -> (cus2) -[:AT_STREET] -> (str4) -[:AT_LOCATION] -> (loc2) -[:IN_CITY] -> (cit1) -[:IN_STATE] -> (sta1) -[:IN_COUNTRY] -> (cou1)
+MERGE (usr2) -[:WROTE] -> (rev17) -[:REVIEW_ON] -> (res7)
+MERGE (usr3) -[:WROTE] -> (rev18) -[:REVIEW_ON] -> (res7)
+
+MERGE (res8) -[:SERVES] -> (cus4) -[:AT_STREET] -> (str4) -[:AT_LOCATION] -> (loc2) -[:IN_CITY] -> (cit1) -[:IN_STATE] -> (sta1) -[:IN_COUNTRY] -> (cou1)
