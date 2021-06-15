@@ -1,0 +1,7 @@
+//Create HSET
+hmset Song-1 title "Euphoria" votes 0
+hmset Song-2 title "NotAfraid" votes 0
+
+//Other Queries
+jedis.hget("Song-1", "votes")//To get the votes
+conn.hincrBy(song, "votes", 1);
