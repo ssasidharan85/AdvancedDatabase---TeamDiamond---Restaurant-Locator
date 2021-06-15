@@ -6,6 +6,7 @@ The project is a "Restaurant Locator" which demonstrates how different databases
 benefits of each database. 
 
 We have used the following NoSQL databases as mentioned below:
+
 •	MongoDB
 	For storing the detailed data and historical data
 
