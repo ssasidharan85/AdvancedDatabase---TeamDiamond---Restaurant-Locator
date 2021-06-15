@@ -23,6 +23,7 @@ The following use cases were implemented using MongoDB and Neo4j in Node.js:
 4.	Define a betting strategy – Prediction
 
 The below use case was implemented using MongoDB and Redis in Java:
+
 5.	Allow users to vote during a live event happening at a restaurant
 
 NOTES:
